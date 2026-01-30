@@ -61,7 +61,6 @@ docker-compose -p premium-bank up -d
 ### 4. ARS 시뮬레이터 (Inbound)
 전화 분실 신고 시뮬레이션을 위해 별도의 CLI 프로그램을 실행합니다.
 ```bash
-cd callcenter-trustee
 # Windows
 ./run-ars.bat
 ```
