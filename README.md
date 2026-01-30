@@ -58,6 +58,15 @@ docker-compose -p premium-bank up -d
   npm run dev
   ```
 
+### 4. ARS 시뮬레이터 (Inbound)
+전화 분실 신고 시뮬레이션을 위해 별도의 CLI 프로그램을 실행합니다.
+```bash
+cd callcenter-trustee/callcenter-was
+# 컴파일 및 실행 (IDE에서 ArsSimulator.main() 실행 권장)
+./gradlew classes
+java -cp build/classes/java/main:build/resources/main com.gwangjin.callcenterwas.ArsSimulator
+```
+
 ---
 
 ## 🛠️ 주요 포트 정보
@@ -95,14 +104,15 @@ docker-compose -p premium-bank up -d
 4.  **"아웃바운드"** 탭 클릭 -> 방금 신청한 홍길동 고객 확인
 5.  **"발신"** 버튼 클릭 -> 통화 연결 시뮬레이션 -> 상담 결과(완료) 저장
 
-### 3️⃣ 시나리오 3: 인바운드 분실 신고 (Inbound -> 2FA -> Block)
-1.  **[Call Center Web](http://localhost:5175)** 접속 -> **"인바운드(검색)"** 탭 클릭
-2.  고객 검색: `01012345678` 입력 (홍길동 번호)
-3.  검색 결과에서 **"본인 인증 및 상담 시작"** 클릭
-4.  **팝업 창**:
-    *   "인증번호 요청" 버튼 클릭 -> WAS 로그에서 OTP 확인
-    *   OTP 입력 및 검증 -> 성공 시 자동으로 분실 신고 화면으로 이동
-5.  **카드 분실 신고**:
-    *   보유 카드 목록 확인
-    *   정지할 카드 선택 -> **"선택한 카드 정지"** 클릭
-    *   완료 메시지 및 접수 번호 확인
+### 3️⃣ 시나리오 3: 인바운드 분실 신고 (ARS)
+1.  **ARS 시뮬레이터** 실행 (위 가이드 참고)
+2.  **환영 메시지**: "안녕하세요, Premium Bank ARS입니다."
+3.  **본인 확인**:
+    *   전화번호 입력: `01012345678`
+    *   비밀번호(PIN) 입력: `1234`
+4.  **서비스 선택**:
+    *   `[1] 잔액 조회` / `[2] 분실 신고` 중 **2번** 선택
+5.  **카드 선택 및 정지**:
+    *   보유 카드 목록 청취 (TTS 시뮬레이션)
+    *   분실된 카드 번호 선택
+    *   **"정지되었습니다."** 메시지 확인
