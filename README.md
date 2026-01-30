@@ -42,12 +42,12 @@ docker-compose -p premium-bank up -d
 ### 3. 프론트엔드(Web) 실행
 각 Web 폴더에서 npm으로 기동합니다.
 
-- **Continue Web (Port 5174)**
+- **Continue Web (Port 3001)**
   ```bash
   cd continue-bank/continue-web
   npm run dev
   ```
-- **Auth Web (Port 5173)**
+- **Auth Web (Port 3000)**
   ```bash
   cd auth-trustee/auth-web
   npm run dev
@@ -73,8 +73,8 @@ java -cp build/classes/java/main:build/resources/main com.gwangjin.callcenterwas
 
 | 서비스 | WAS Port | Web Port | 비고 |
 | :--- | :--- | :--- | :--- |
-| **Continue Bank** | 8081 | 5174 | 위탁사 |
-| **Auth Trustee** | 8082 | 5173 | 수탁사 1 |
+| **Continue Bank** | 8081 | 3001 | 위탁사 |
+| **Auth Trustee** | 8082 | 3000 | 수탁사 1 |
 | **CallCenter** | 8080 | 5175 | 수탁사 2 |
 | **PostgreSQL** | 5432 | - | DB (Docker) |
 
@@ -89,7 +89,7 @@ java -cp build/classes/java/main:build/resources/main com.gwangjin.callcenterwas
 | **User B** | **kim** | **kim** | **1234** | `010-9876-5432` | 예비 계정 |
 
 ### 1️⃣ 시나리오 1: 웹 로그인 및 2차 인증 (2FA)
-1.  **[Continue Bank Web](http://localhost:5174)** 접속
+1.  **[Continue Bank Web](http://localhost:3001)** 접속
 2.  로그인 시도: `hong` / `1234`
 3.  **2단계 인증(OTP)** 화면 진입
 4.  **Auth WAS 로그 확인**:
@@ -98,7 +98,7 @@ java -cp build/classes/java/main:build/resources/main com.gwangjin.callcenterwas
 6.  **"결제하기"** 버튼 클릭 -> 가상 카드 확인 -> 결제 승인
 
 ### 2️⃣ 시나리오 2: 아웃바운드 상담 (Lead -> Call)
-1.  **[Continue Bank Web](http://localhost:5174)** 메인 하단 **"상담 신청"** 배너 클릭
+1.  **[Continue Bank Web](http://localhost:3001)** 메인 하단 **"상담 신청"** 배너 클릭
 2.  상품(대출/카드 등) 선택 및 필수 동의 체크 -> 신청 완료 (Lead 생성)
 3.  **[Call Center Web](http://localhost:5175)** 접속
 4.  **"아웃바운드"** 탭 클릭 -> 방금 신청한 홍길동 고객 확인
