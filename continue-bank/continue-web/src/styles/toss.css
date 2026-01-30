@@ -1,0 +1,270 @@
+:root{
+  --bg:#f4f6f8;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --brand:#2563eb;
+  --brand2:#1d4ed8;
+  --danger:#ef4444;
+  --success:#10b981;
+  --shadow: 0 10px 25px rgba(0,0,0,.06);
+  --radius: 16px;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg)}
+
+.toss-wrap{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:28px 16px;
+  color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Arial;
+}
+
+.toss-container{
+  width: 100%;
+  max-width: 480px;
+  display:grid;
+  gap:14px;
+}
+
+.toss-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:4px 6px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  letter-spacing:-0.2px;
+}
+
+.logo{
+  width:34px;height:34px;border-radius:10px;
+  background: linear-gradient(135deg,var(--brand),var(--brand2));
+  box-shadow: var(--shadow);
+}
+
+.badge{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  color:var(--muted);
+  background:#fff;
+}
+
+.badge.success{border-color: rgba(16,185,129,.35); color: var(--success)}
+.badge.danger{border-color: rgba(239,68,68,.35); color: var(--danger)}
+.badge.progress{border-color: rgba(37,99,235,.35); color: var(--brand)}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+.card-hd{
+  padding:18px 18px 10px 18px;
+  display:grid;
+  gap:6px;
+}
+
+.title{
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:-0.2px;
+}
+.sub{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.4;
+}
+
+.card-bd{
+  padding:14px 18px 18px 18px;
+  display:grid;
+  gap:14px;
+}
+
+.row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 12px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background: #fafafa;
+}
+
+.row strong{font-size:16px}
+.row span{color:var(--muted); font-size:13px}
+
+.stepper{
+  display:flex;
+  gap:10px;
+}
+
+.step{
+  flex:1;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:#fff;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.dot{
+  width:10px;height:10px;border-radius:999px;
+  background:#d1d5db;
+}
+.step.active .dot{background: var(--brand)}
+.step.done .dot{background: var(--success)}
+.step .label{
+  font-size:12px;
+  color:var(--muted);
+}
+.step.active .label{color: var(--brand)}
+.step.done .label{color: var(--success)}
+
+.btns{
+  display:flex;
+  gap:10px;
+}
+
+.btn{
+  flex:1;
+  border:none;
+  border-radius: 14px;
+  padding: 14px 14px;
+  font-weight:800;
+  cursor:pointer;
+  transition: transform .05s ease, opacity .15s ease;
+}
+
+.btn:active{transform: scale(.99)}
+.btn.primary{
+  background: linear-gradient(135deg,var(--brand),var(--brand2));
+  color:#fff;
+}
+.btn.ghost{
+  background:#fff;
+  border:1px solid var(--line);
+  color:var(--text);
+}
+
+.btn:disabled{
+  cursor:not-allowed;
+  opacity:.55;
+}
+
+.toast{
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  background: rgba(17,24,39,.92);
+  color:#fff;
+  padding: 12px 14px;
+  border-radius: 14px;
+  max-width: 520px;
+  width: calc(100% - 28px);
+  box-shadow: var(--shadow);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.kv{
+  font-size:12px;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.sep{
+  height:1px;
+  background: var(--line);
+  margin: 2px 0;
+}
+
+/* ===== Layout Fix (전체 중앙 정렬 + 상단 네비 정돈) ===== */
+
+.app-shell{
+  min-height: 100vh;
+  background: var(--bg);
+  display:flex;
+  justify-content:center;
+}
+
+.app-inner{
+  width: 100%;
+  max-width: 980px;
+  padding: 18px 16px 40px;
+}
+
+.topnav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 8px 6px;
+  margin-bottom: 18px;
+}
+
+.topnav-left{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+
+.topnav-title{
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing:-0.2px;
+}
+
+.topnav-links{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+
+.topnav-links a{
+  text-decoration:none;
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+.topnav-links a.active{
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+/* 페이지 가운데 카드 배치 */
+.page-center{
+  display:flex;
+  justify-content:center;
+}
+
+.page-card{
+  width: 100%;
+  max-width: 520px;
+}
+
+/* PaymentPage 기존 toss-container 폭/정렬을 페이지 컨테이너에 맡김 */
+.toss-wrap{ min-height:auto; padding:0; }
+.toss-container{ max-width:none; }

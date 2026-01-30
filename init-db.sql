@@ -1,0 +1,8 @@
+-- Initialize Databases
+CREATE DATABASE issuerdb;
+CREATE DATABASE callcenterdb;
+CREATE DATABASE authdb;
+
+GRANT ALL PRIVILEGES ON DATABASE issuerdb TO admin;
+GRANT ALL PRIVILEGES ON DATABASE callcenterdb TO admin;
+GRANT ALL PRIVILEGES ON DATABASE authdb TO admin;

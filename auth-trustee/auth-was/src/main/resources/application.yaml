@@ -1,0 +1,28 @@
+server:
+  port: 8082
+
+
+spring:
+  profiles:
+    active: dev
+    
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: authuser
+    password: authpass
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+app:
+  otp:
+    revealInResponse: true
